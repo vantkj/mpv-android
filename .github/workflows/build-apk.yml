@@ -36,8 +36,8 @@ jobs:
       - name: Build debug APK
         run: ./gradlew assembleDebug --stacktrace
 
-      - name: Upload APK artifact
+    - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: mpv-drive-debug-apk
-          path: app/build/outputs/apk/debug/*.apk
+          path: app/build/outputs/apk/**/*.apk
