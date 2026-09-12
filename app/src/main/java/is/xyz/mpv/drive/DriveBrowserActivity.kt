@@ -172,7 +172,7 @@ class DriveBrowserActivity : AppCompatActivity() {
         val url = DriveApi.buildStreamUrl(file.id)
         val intent = Intent(this, MPVActivity::class.java).apply {
             action = Intent.ACTION_VIEW
-            data = Uri.parse(url)
+            setDataAndType(Uri.parse(url), "video/any")
         }
         startActivity(intent)
     }
