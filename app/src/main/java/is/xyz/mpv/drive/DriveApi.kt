@@ -108,7 +108,7 @@ object DriveApi {
                         )
                     }
                 }
-                pageToken = json.optString("nextPageToken", null).takeIf { it.isNotEmpty() }
+                pageToken = if (json.has("nextPageToken")) json.getString("nextPageToken") else null
             }
         } while (pageToken != null)
         return out
