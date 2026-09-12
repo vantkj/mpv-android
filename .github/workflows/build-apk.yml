@@ -1,7 +1,7 @@
 name: Build Drive-enabled mpv APK
 
 on:
-  workflow_dispatch:      # tombol "Run workflow" manual di tab Actions
+  workflow_dispatch:
   push:
     branches: [ main, master ]
 
@@ -23,20 +23,13 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
-      # Kalau repo mpv-android punya script sendiri buat siapin native lib
-      # (libmpv/ffmpeg), jalanin dulu di sini SEBELUM gradlew. Cek README/CI
-      # yang sudah ada di repo aslinya buat tau perintah persisnya —
-      # kemungkinan besar sesuatu kayak salah satu di bawah ini:
-      # - name: Prepare native libs
-      #   run: ./buildscripts/build.sh   # <- sesuaikan, lihat CI asli mpv-android
-
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
       - name: Build debug APK
         run: ./gradlew assembleDebug --stacktrace
 
-    - name: Upload APK artifact
+      - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: mpv-drive-debug-apk
