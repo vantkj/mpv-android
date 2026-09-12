@@ -240,6 +240,16 @@
             android:parentActivityName=".preferences.PreferenceActivity"
             android:launchMode="singleTop"
             android:label="@string/pref_header_about_mpv" />
+        
+        <activity
+            android:name=".drive.DriveBrowserActivity"
+            android:exported="true"
+            android:label="Drive Browser" />
+
+        <activity
+            android:name=".drive.DriveLoginActivity"
+            android:exported="false"
+            android:label="Login Google Drive" />
 
         <service
             android:name=".BackgroundPlaybackService"
